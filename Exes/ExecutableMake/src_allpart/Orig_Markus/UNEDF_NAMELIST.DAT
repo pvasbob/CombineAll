@@ -1,0 +1,206 @@
+!
+!================================= HFBTHO_NAMELIST =========================================
+&HFBTHO_NAMELIST
+ MAX_ITER_INI =     201,
+ EPSI_INI =         1.000E-08,
+ ADD_PAIRING_INI =  T,
+ ICOU_INI =         2,
+! ILST_INI =         -1,
+ ILST_INI =         0,
+ KEYPJ_INI =       11,
+ IPROJ_INI =        1,
+ NPR1PJ_INI =       0,
+ NPR2PJ_INI =       0,
+ DO_FITT_INI =      F,
+ IDEBUG_INI =       0,
+ PARITY_INI =       T,
+ Print_HFBTHO_Namelist_INI =  T
+ /
+
+
+&UNEDF_NAMELIST FUNCTIONALNAME  = 'UNEDF0',
+DMEORDER=-1,
+DMELDA=0,
+USE_INM = T,
+HBZERO   =  20.7355300000000     ,
+CRHO     =  0.0, 0.0,
+CDRHO    =  0.0, 0.0,
+CTAU     =  0.0, 0.0,
+CJ       =  0.0, 0.0
+CRDR     = -55.2606, -55.6226,
+CRDJ     = -79.5308, 45.6302,
+E_NM     = -16.0559,
+K_NM     =  230.0,
+SMASS_NM =  0.9,
+RHO_NM   =  0.160526,
+ASS_NM   =  30.5429,
+LASS_NM  =  45.0804,
+VMASS_NM =    1.249838547196253
+CPV0 = -170.374, -199.202,
+CPV1 = 0.5,0.5,
+CEXPAR = 1.0,
+PRINT_NAMELIST =  T, USE_J2TERMS = F, USE_CM_COR = T
+/
+
+&UNEDF_NAMELIST
+ FUNCTIONALNAME = 'ORIGINAL_SLY4'                        ,
+ DMEORDER = -1, DMELDA = 0,  USE_INM =  F,
+ HBZERO =    20.73553000000000   ,
+!
+! fixed value of CRHO
+! old CRHO was  -933.3423749999999,830.0524855000001 
+ CRHO  = -933.341249999999945, 830.051484999999957 ,
+ CDRHO =    861.0625000000000    ,-1064.273250000000     ,
+ CTAU =    57.12868750000000     , 24.65673650000000     ,
+ CRDR =   -76.99620312499999     , 15.65713512500000     ,
+ CRDJ =   -92.25000000000000     ,-30.75000000000000     ,
+ CJ =    17.20961150000000       , 64.57581250000000     ,
+ SIGMA =   0.1666666666666667    ,
+! CPV0 =   -258.2000000000000     ,-258.2000000000000     ,
+! CPV1 =   0.5000000000000000     ,0.5000000000000000     ,
+ E2CHARG =    1.439978400000000  ,
+ CEXPAR = 1.0,
+ E_NM =   -15.97214914144462     ,
+ K_NM =    229.9009644826037     ,
+ SMASS_NM =    1.439546988976078 ,
+ RHO_NM =   0.1595387567117334   ,
+ ASS_NM =    32.00430281505202   ,
+ LASS_NM =    45.96175148046161  ,
+ VMASS_NM =    1.249838547196253 ,
+ PRINT_NAMELIST =  F,
+ use_TMR_pairing=0,
+! cristina losa 
+ USE_INM =  F, 
+ USE_J2TERMS = F,
+ USE_CM_COR = T,
+ CJ =     0.   , 0.  ,
+! test pairing
+! CPV0 =-258.2000,-258.2000, CPV1=0.500, 0.500,
+ CPV0 =-180.0,-180.0, CPV1=0.0, 0.0,
+/
+
+ &UNEDF_NAMELIST
+ FUNCTIONALNAME = 'ORIGINAL_SKMS'                        ,
+ DMEORDER =-1, DMELDA = 0,  USE_INM =  F,
+ HBZERO =   20.7339830   ,
+ CRHO =   -991.87500             ,  390.13750000          ,
+ CDRHO =   974.68750000          , -324.89583333333330    ,
+ CTAU =    34.687500             , -34.0625000            ,
+ CRDR =   -68.20312500           ,  17.109375000          ,
+ CRDJ =   -97.5000               , -32.5000               ,
+ CJ =      34.0625               , 34.0625                ,
+ CJ =    0.0                     , 0.0                    ,
+ SIGMA =   0.1666666666666667    ,
+! CPV0 =   -221.81255     ,-221.81255         , !mixed  
+! CPV1 =   0.5000000000000000     ,0.5000000000000000     ,
+ CPV0 =   -160.0     ,-180.0         ,
+ CPV1 =   0.0     ,0.0     ,
+ E2CHARG =    1.439978400000000  ,
+ E_NM =   -15.77198395137868     ,
+ K_NM =    216.6131723750050     ,
+ SMASS_NM = 1.268177786402191     ,
+ RHO_NM =   0.1602996371672980     ,
+ ASS_NM =    30.03295190612782     ,
+ LASS_NM =    45.77584442898293     ,
+ VMASS_NM =    1.531523540616954     , 
+ PRINT_NAMELIST =  F,
+/
+
+!======================================================================================== 
+ 
+!======================================= UNEDF1 =========================================
+&UNEDF_NAMELIST FUNCTIONALNAME  = 'UNEDF1',
+DMEORDER=-1,
+DMELDA=0,
+USE_INM = T,
+HBZERO   =  20.735530d0,
+CRHO     =  0.0, 0.0,
+CDRHO    =  0.0, 0.0,
+CTAU     =  0.0, 0.0,
+CJ       =  0.0, 0.0,
+CRDR     = -45.1351310222373d0, -145.382167908057d0,
+CRDJ     = -74.0263331764599d0, -35.6582611147917d0,
+E_NM     = -15.80d0,
+K_NM     =  220.0d0,
+SMASS_NM =  0.992423332283364d0,
+RHO_NM   =  0.158706769332587d0,
+ASS_NM   =  28.9867890577721d0,
+LASS_NM  =  40.0047904804136d0,
+VMASS_NM =  1.249838574232270d0,
+CPV0 = -186.065399575124d0, -206.579593890106d0,
+CPV1 = 0.50d0,0.50d0,
+CEXPAR = 1.0d0,
+PRINT_NAMELIST =  T, USE_J2TERMS = F, USE_CM_COR = F
+!
+!RESULTS:
+!def  b0, bz, bp ..........       2.039014       2.039014       2.039014
+!  LN lambda_2 ... ala2        0.104727       0.688887
+!  LN energies .........      -1.026984      -1.286294      -2.313277
+!  delta(n,p)+ala2 .....       1.000168       1.190986
+!  rms-radius ..........       4.733409       4.579096       4.669731
+!  q2 defformation, beta       0.000000       0.000000       0.000000
+!  kinetic energy ......    1359.231882     849.919741    2209.151623
+!  spin-orbit energy ...                                   -43.988474
+!  coulomb energy ......                                   348.181858
+!          direct ......                                   367.389203
+!          exchange ....                                   -19.207345
+!  tensor energy .......                                     0.000000
+!  tEnergy: ehfb (qp)...                                 -1017.923660
+!  tEnergy: ehfb(qp)+LN                                  -1020.236937
+/
+!======================================================================================== 
+
+
+
+!================================= SKP ===================================================
+&UNEDF_NAMELIST
+ FUNCTIONALNAME = 'ORIGINAL_SKP'                        ,
+ DMEORDER = -1, DMELDA = 0,  USE_INM = F,
+ HBZERO =    20.73		 ,
+ CRHO =   -1099.38600000000        580.586845986000,
+ CDRHO =   1169.31000000000        ,-530.890126200000,
+ CTAU =   -1.379017501079716E-005,  -44.6420317341250,
+ CRDR =   -60.1159159475437   ,     35.0556637805063,
+ CRDJ =   -75.0000000000000   ,    -25.0000000000000,
+ CJ =     -7.71303669395000   ,     41.1267062500000
+ SIGMA =   0.1666666666666667    ,
+ CPV0 =   -211.5960000000000     ,-211.596000000000     ,
+ CPV1 =   0.5000000000000000     ,0.5000000000000000     ,
+ E2CHARG =    1.439978400000000  ,
+ CEXPAR = 1.0,
+ E_NM =   0.0     ,
+ K_NM =   0.0     ,
+ SMASS_NM =  0.0   ,
+ RHO_NM =    0.162000000000000 ,
+ ASS_NM =    0.0   ,
+ LASS_NM =   0.0   ,
+ VMASS_NM =  0.0   ,
+ PRINT_NAMELIST =  F,
+ use_TMR_pairing=0,
+ !cristina losa 
+ ! USE_INM =  T, 
+ USE_J2TERMS = F,
+ USE_CM_COR = T,
+ CJ =     0.   , 0.  ,
+ use_TMR_pairing=0                                                                          
+ !CPV0 =   -194.08000 ,-194.080000     ,  ! original volume pairing 1.245 at Sn120  Nsh=12,
+ !CPV0 =   -125.2000000000000     ,-125.2000000000000     , CPV1=0.0, 0.0,                  
+ !CPV0 =   -258.2000000000000     ,-258.2000000000000     , CPV1=0.50, 0.50,
+ ! 
+ !original SLY4 volume pairing 1.245 at Sn120  Nsh=20, SLY4 no c.m.c no LN
+ !use_TMR_pairing=0, CPV0 = -190.0000 ,-190.00000, CPV1=0.00, 0.00,
+ !
+ ! original SLY4 mixed pairing 1.245 at Sn120  Nsh=20, SLY4 with c.m.c  no LN
+ ! use_TMR_pairing=0, CPV0 = -283.45000 ,-283.450000, CPV1=0.50, 0.50
+ !
+ ! original  SLY4  TMR pairing 1.245 at Sn120  Nsh=20, SLY4 with c.m.c  no LN
+ !use_TMR_pairing=1, CPV0 =-728.0000000000000,0.64420493600000, CPV1=1.644500, 1.644500, 
+ !
+ !
+ /
+!======================================================================================== 
+&UNEDF_NAMELIST
+FUNCTIONALNAME = 'FITS'
+/
+
+ 

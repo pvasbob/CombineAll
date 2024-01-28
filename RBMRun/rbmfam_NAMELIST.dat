@@ -1,0 +1,14 @@
+&FAM_RBM_INPUT
+ normcut = 1.0d-10,
+ number_of_training_points=11,
+ number_of_operators=1,
+ fam_training_inputfile = "emulatortraining.dat",
+ rbm_outputfile         = "emulatorRBMoutput.dat",
+ emulator_outputfile    = "emulator.dat",
+ VARIATION  = 1,
+ STRENGTH_EMULATOR_RUN = .True.
+ qrpa_omega_emulatorrun_start = (0.0d0, 0.5d0),
+ qrpa_omega_emulatorrun_step  = (0.1d0, 0.0d0),
+ nmax_emulatorrun = 100,
+ mirror_points(1:4) = .True.,
+ /

@@ -1,0 +1,103 @@
+1  -1.0         0.    2  2   'ORIGINAL_SKMS'           1   -1    0.23   0.5   0 -1 3 0 3    -0 1 2 0 2
+0  -2.035       0.   74 54   'Jason26jan12'          -1   -1    0.08   0.25   0 -1 3 0 3    0 -1 3 0 3
+0  -2.035       0.    20 20   'Jason16jan11b'          -1   -1    0.0   0.25   0 -1 3 0 3    7 -1 3 0 3
+0  -2.035       0.    20 20   'Jason16jan11b'          -1   -1    0.0   0.25   0 -1 3 0 3    0 -1 3 0 3
+0  -2.311      0.0   10 10  'UNEDF0'             -1    1    0.0    0.5   0 -1 5 1 2    0 1 2 0 2
+00  -2.311      0.29  152 102  'UNEDF1'           -1    2    0.29   0.5   0 -1 5 1 2    0 1 2 0 2
+0  -2.311      0.29  152 102  'UNEDF1noC'           -1    2    0.29   0.5   0 -1 5 1 2    0 1 2 0 2
+3  -2.311       0.0   22 20  'SLY4test' 1 1 0.0 0.5 0 -1 5 1 2 0 1 2 0 2
+20  -2.311      0.0   22 20  'SLY4test' 1 1 0.0 0.5 0 -1 5 1 2 0 1 2 0 2
+0   -2.234776   0.29  152 102  'UNEDF1noC'           -1    2    0.29   0.5   0 -1 5 1 2    0 1 2 0 2
+ 0  -2.035       0.    12 12   'ORIGINAL_SKMS'      1    1   -0.3   0.25   0 -1 3 0 3    0 -1 5 0 5
+20  -2.035       0.    12 12   'ORIGINAL_SLY4'      1   -1    0.3   0.25   0 -1 3 0 3    0 -1 5 0 5
+ 0  -2.035       0.    12 12   'ORIGINAL_SKMS'      1    1   -0.3   0.25   0 -1 3 0 3    0 -1 5 0 5
+20  -2.035       0.    12 12   'ORIGINAL_SKMS'      1   -1   -0.3   0.25   0 -1 3 0 3    0 -1 5 0 5
+ 0  -2.035       0.    12 12   'ORIGINAL_SKMS'      1    1   -0.3   0.25   0 -1 3 0 3    0 -1 5 0 5
+20   -2.234776   0.    12 12   'UNEDF0'            -1   200   0.05   0.5   0 -1 5 1 2    0 1 2 0 2
+20   -2.234776   0.    12 12   'UNEDF0'            -1  -200   0.10   0.5   0 -1 5 1 2    0 1 2 0 2
+20   -2.234776   0.    12 12   'UNEDF0'            -1  -200   0.15   0.5   0 -1 5 1 2    0 1 2 0 2
+20   -2.234776   0.    12 12   'UNEDF0'            -1  -200   0.20   0.5   0 -1 5 1 2    0 1 2 0 2
+20   -2.234776   0.    12 12   'UNEDF0'            -1  -200   0.25   0.5   0 -1 5 1 2    0 1 2 0 2
+20   -2.234776   0.    12 12   'UNEDF0'            -1  -200   0.30   0.5   0 -1 5 1 2    0 1 2 0 2
+20   -2.234776   0.    12 12   'UNEDF0'            -1  -200   0.35   0.5   0 -1 5 1 2    0 1 2 0 2
+ 0  -2.234776    0.    82 50   '-------------'       -1    1    0.0    0.5   0 -1 5 1 2    0 -1 3 0 3
+20 -2.234776     0.   146 94   'ORIGINAL_SLY4'		  1   -1    0.20   0.5   0 -1 5 1 2    0 -1 3 0 3
+ 20 -2.234776    0.    60 40   'ORIGINAL_SLY4'		  1   -1    0.50   0.5   0 -1 5 1 2    0 -1 3 0 3
+12 -2.234776    0.     70 50   'ORIGINAL_SLY4'		  1   -1   -0.0    0.5   0 -1 5 1 2    0 -1 3 0 3
+!................................................................................................... 
+!(a)   (b)     (c)  (d)   (e)   (f)                 (g)  (h) (i)   (j)   (k)           (l)  
+!n00    b0    beta0  N     Z     force              LN    C  Cbeta cquad blNeutrons    blProtons
+20 -2.234776    0.    82 50   'ORIGINAL_SKMS'		 1   -1    0.0   0.5   0 -1 5 1 2    0 -1 3 0 3
+20  2.135       0.   126 82   'UNEDF1'              -1   -100  0.0   1.5   0 -1 3 0 3   -11 -1 5 0 5
+20  2.035       0.   126 82   'UNEDF1'              -1    1    0.0   1.5   0 -1 3 0 3    9 -1 5 0 5
+!=================================================================================================== 
+! Read(lin,*)                                                 
+! (a) n00    Number of oscillator shells
+!             n00>0 prints to thoout.dat & screen
+!             n00<0 no print at all 
+!             n00=0 program stops (NB!)
+! (b) b0     Oscillator Basis parameter b0>0 (If b0<0 it takes a default value)
+! (c) beta0  Value of Basis deformation parameter
+! (d) AN     Number of neutrons N 
+! (e) AZ     Number of protons Z
+! (f)'FTST'  Fayance forces label
+! (g) kind   Kind of calculations 1: noLN, -1:LN
+! (h) inin   Unconstraint Iterations from peviouse solution
+!             -1: (from spherical *.hel or *.tel file)
+!             -2: (from prolate   *.hel or *.tel file)
+!             -3: (from oblate    *.hel or *.tel file)
+!            Unconstraint Iterations fom scratch with
+!            preliminary constraint at deformation Cbeta, (i):
+!              1: Spherical scratch 
+!              2: Prolate scratch
+!              3: Oblate scratch
+!            Constrained calculation (icstr) at Cbeta, see (i)
+!              100, 200, 300 fom scratch
+!             -100,-200,-300 fom previouse solution
+! (i) Cbeta Requested deformation used in (h)
+! (j) Cqad  Spring constraint constant  used in (h)
+! (k) blNeutrons: a group responsible for blocking a particular neutron level
+!     The group consists of 5 numbers, e.g., for 7-[ 3, 0, 3]: 7 -1 3 0 3
+!      k1  2 \times \Omega 
+!         =0: the whole group (k) is disregarded (n0 blocking)
+!         >0: blocking in N+1 nucleus
+!         <0: blocking in N-1 nucleus
+!      k2  parity (+1 or -1); NB! when k2=0, the ground state walker is applied
+!      k3,k4,k5  Nilson quantum numbers
+! (l) blProtons: exactly the same as (k) but for protons 
+!================================================================================================ 
+!     
+
+
+
+
+
+
+Blocking candidates are:
+   neutron eqpmin=   0.9395075860939449       pwiblo=    3.904343989291293     
+    num=   1 block=   1 state=   1     1 Eqp=   3.82982988  (1-2N)E=  -3.73726510  Ovlp=   0.75522115  1+[ 2, 1, 1]
+    num=   2 block=   3 state=   1    89 Eqp=   9.03372147  (1-2N)E=  -8.98242569  Ovlp=   0.85757719  3+[ 2, 1, 1]
+    num=   3 block=   8 state=   1   254 Eqp=  21.33687856  (1-2N)E=  21.33065833  Ovlp=   0.67918122  7-[ 5, 2, 3]
+    num=   4 block=   6 state=   1   197 Eqp=  17.60055093  (1-2N)E=  17.59736790  Ovlp=   0.31731803  5-[ 5, 1, 2]
+    num=   5 block=   4 state=   1   128 Eqp=   7.52866448  (1-2N)E=   7.48931824  Ovlp=   0.79187779  3-[ 3, 1, 2]
+    num=   6 block=   2 state=   1    47 Eqp=   4.15191385  (1-2N)E=   4.11830257  Ovlp=   0.56573885  1-[ 3, 3, 0]
+    num=   7 block=   1 state=   2     2 Eqp=   5.10245391  (1-2N)E=  -5.05510181  Ovlp=   0.74345971  1+[ 2, 0, 0]
+    num=   8 block=   4 state=   2   129 Eqp=  15.26691854  (1-2N)E=  15.23428720  Ovlp=   0.33564367  3-[ 7, 0, 1]
+    num=   9 block=   2 state=   2    48 Eqp=   5.85117967  (1-2N)E=   5.82820816  Ovlp=   0.62191987  1-[ 3, 0, 1]
+
+   Blocking candidates are:
+   proton  eqpmin=    1.282148402448246       pwiblo=    3.904343989291293     
+    num=   1 block=   1 state=   1     1 Eqp=   1.28214840  (1-2N)E=  -0.89052936  Ovlp=   0.65010719  1+[ 2, 1, 1]
+    num=   2 block=   1 state=   2     2 Eqp=   2.10414120  (1-2N)E=  -1.94990640  Ovlp=   0.74124517  1+[ 2, 0, 0]
+    num=   3 block=   2 state=   1    39 Eqp=   2.02684119  (1-2N)E=   1.81610205  Ovlp=   0.59589115  1-[ 3, 1, 0]
+    num=   4 block=   3 state=   1    81 Eqp=   1.54414560  (1-2N)E=  -1.23226450  Ovlp=   0.80132568  3+[ 2, 0, 2]
+    num=   5 block=   4 state=   1   113 Eqp=   1.91588573  (1-2N)E=   1.69066487  Ovlp=   0.67212030  3-[ 3, 2, 1]
+    num=   6 block=   4 state=   2   114 Eqp=   5.08557881  (1-2N)E=   5.04938478  Ovlp=   0.76660254  3-[ 3, 0, 1]
+    num=   7 block=   6 state=   1   176 Eqp=   1.73092912  (1-2N)E=   1.47605746  Ovlp=   0.85855537  5-[ 3, 1, 2]
+    num=   8 block=   8 state=   1   228 Eqp=   1.54584230  (1-2N)E=   1.25011767  Ovlp=   0.92612837  7-[ 3, 0, 3]
+
+
+
+
+
+

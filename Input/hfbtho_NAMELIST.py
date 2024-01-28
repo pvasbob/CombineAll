@@ -3,15 +3,15 @@ import math
 
 hfbtho_NAMELIST = {
     '&hfbtho_general': {
-        'number_of_shells': 6,
+        'number_of_shells': 16,
         'oscillator_length': -1.0,
-        'basis_deformation': +0.15,
-        'proton_number': 12,
-        'neutron_number': 12,
+        'basis_deformation': +0.20,
+        'proton_number': 30,
+        'neutron_number': 48,
         'type_of_calculation': 1
     },
     '&hfbtho_initial': {
-        'beta2_deformation': +0.15,
+        'beta2_deformation': +0.20,
         'beta3_deformation': 0.0,
         'beta4_deformation': 0.0
     },
@@ -35,7 +35,7 @@ hfbtho_NAMELIST = {
     '&hfbtho_constraints': {
         'lambda_values': [1, 2, 3, 4, 5, 6, 7, 8],
         'lambda_active': [0, -1, 0, 0, 0, 0, 0, 0],
-        'expectation_values': [0.0, 0.5927836524190626, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        'expectation_values': [0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     },
     '&hfbtho_blocking': {
         'proton_blocking': [0, 0, 0, 0, 0],

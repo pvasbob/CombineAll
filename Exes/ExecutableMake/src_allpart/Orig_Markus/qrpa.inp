@@ -1,0 +1,48 @@
+========== qrpa.inp =========================================
+1,0                 ! calc. mode, file io    (integers)
+1,0,0,0             ! O,T,L,K                (integers)
+0.0000001           ! qrpa_eps               (stop criteria - accuracy)
+200                 ! max_iter_qrpa          (stop criteria - iteractions)
+40                  ! qrpa_nbroyden          (inter Broyden)
+0.33                ! qrpa_alphamix          (mix Linear/Broyden)
+0.0,0.1,0.1,0.0    ! line parameters        (Re and Im part of the starting point, Re and Im part of the step)
+2.22,0.0,0.11       ! circle parameters      (Re and Im part of the circle's center, radius of the circle)
+0.0,200.0           ! half-circle parameters (Re part of the half-circle's center, radius of the half-circle)
+200                 ! qrpa_points            (number of points to calculate)
+=============================================================
+
+! Krisa comments
+!-------------------------------------------------------------------------------------
+! calculation mode          1 - line in complex plane
+!                           2 - circle in complex plane, counterclockwise path
+!                           3 - half-circle in complex plane (center at the real axis)
+!                               (each mode reads its own input parameters defined above)
+!-------------------------------------------------------------------------------------
+! file io selector          0 - does not write of read amplitudes
+!                           1 - writes X and Y amplitudes on file amplitudes.dat
+!                               after each omega point, the file is rewritten
+!                           2 - reads amplitudes for the conjugate operator Q
+!-------------------------------------------------------------------------------------
+! O = operator type         0 - will not calculate QRPA
+!                           1 - Electric
+!                           2 - Spin
+!                           3 - Magnetic
+!                           4 - Linear Momentum
+!                           5 - Coordinate
+!                           6 - Total Angular Momentum
+!                           7 - Total Angular Momentum J_y (for Thouless-Valatin) 
+!
+! T =                       0 - ISOSCALAR
+!                           1 - ISOVECTOR
+!		            2 - BARE
+!
+! L = orbital quantum number
+!
+! K = magnetic quantum number
+!-------------------------------------------------------------------------------------
+
+! qrpa_nbroyden - is set to 40 so that each core uses less than 2GB of memory when using 20 oscillator shells
+!
+!   qrpa_points - has to be set to such a number that each task(core) will get the same amount of points to calculate !
+!                 basically if batch job's -n = 50, qrpa_points can be 50,100,150,200,...
+

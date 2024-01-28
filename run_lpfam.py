@@ -12,13 +12,19 @@ lpfam_dir = {
    "working" : "Working",
    "output" : "Output",
    "Exes" : "Exes",
-   "hfbtho_main" : "hfbtho_main",
+   "hfbtho_allpart" : "hfbtho_allpart",
+   "hfbtho_diffpart" : "hfbtho_diffpart",
    "InputTemplate" : "InputTemplate",
 }
 
 lpInput_files = {
     "hfbtho_namelist" : "hfbtho_NAMELIST.dat",
     "qrpa.inp": "qrpa.inp",
+}
+
+rbm_dir = {
+    "trainingData_dir": "TrainingData",
+    "H11ToPPnfam:" : "H11ToPPnfam",
 }
 
 
@@ -29,6 +35,7 @@ def mkdirWorking(top, label):
         sys.exit()
     else:
         os.mkdir(working_dir)
+        return working_dir
         
 
 def mkdirJobs(top, label):
@@ -98,14 +105,6 @@ def main():
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
 
-    currentDir = os.getcwd()	
-    # print(currentDir)
-
-    if(rank == 0):
-        mkdirWorking(currentDir, lpfam_dir["working"])
-
-    working_dir = os.path.join(currentDir, lpfam_dir["working"])
-    comm.barrier()  # insure working dir exists before every subprocess create folder inside working dir.
 
     # record number of omega points, since we are gonna to change the value in dictionary. 
     # -1 because python start with 0.   
@@ -115,13 +114,43 @@ def main():
     qrpaOmegaStep_re = qrpa_input["line parameters"][2]
     qrpaOmegaStep_im = qrpa_input["line parameters"][3]
 
+    operatorType = str(qrpa_input["O,T,L,K"][1]) + str(qrpa_input["O,T,L,K"][2]) + str(qrpa_input["O,T,L,K"][3])
+
+    currentDir = os.getcwd()	
+    # print(currentDir)
+
+    if(rank == 0):
+        working_dir = mkdirWorking(currentDir, lpfam_dir["working"])
+        output_dir = mkdirWorking(currentDir, lpfam_dir["output"])
+        trainingDataOpeator_dir = mkdirWorking(output_dir, rbm_dir["trainingData_dir"]+operatorType)
+
+    # get working_dir once one time for every subprocess. 
+    # working_dir = os.path.join(currentDir, lpfam_dir["working"])
+        for dest_rank in range(1, maxNumJobs + 1):
+            comm.send(working_dir, dest_rank)
+            comm.send(output_dir, dest_rank)
+            comm.send(trainingDataOpeator_dir, dest_rank)
+    else:
+        if (rank <=maxNumJobs):
+            working_dir = comm.recv(source = 0)
+            output_dir = comm.recv(source = 0)
+            trainingDataOpeator_dir = comm.recv(source = 0)
+
+
+    comm.barrier()  # insure working dir exists before every subprocess create folder inside working dir.
+
+
     # exclude core which beyond the total amount of jobs.
     if (rank > maxNumJobs): sys.exit()
 
     job_dir = mkdirJobs(working_dir, str(rank))
     #
     # copy executables hfbtho_main to job_dir
-    copyExeToJob(lpfam_dir["hfbtho_main"], os.path.join(currentDir, lpfam_dir["Exes"]), job_dir)
+    if rank  == 0:
+        copyExeToJob(lpfam_dir["hfbtho_allpart"], os.path.join(currentDir, lpfam_dir["Exes"]), job_dir)
+    else:
+        copyExeToJob(lpfam_dir["hfbtho_diffpart"], os.path.join(currentDir, lpfam_dir["Exes"]), job_dir)
+        
     # construct input file hfbtho_NAMELIST.dat, qrpa.in for hfbtho_main. Right now just simply copy them to job_dir.
     #Later need to design hfbtho_NAMELIST.dat according to input data.
     # copyInputToJob(lpInput_files["hfbtho_namelist"], os.path.join(currentDir, lpfam_dir["InputTemplate"]), job_dir)
@@ -133,10 +162,25 @@ def main():
     # modify qrpa_int dictionary for each subroutine so that it has the correct one omega qrpa_inp dict.
     qrpa_input["line parameters"][0] = qrpaOmegaStart_re + rank*qrpaOmegaStep_re
     qrpa_input["line parameters"][1] = qrpaOmegaStart_im + rank*qrpaOmegaStep_im
+    qrpa_input["qrpa_points"][0] = 1
     write_qrpa_inp_ToJobs(job_dir, qrpa_input, lpInput_files["qrpa.inp"])
 
 
-    run_lpfam(job_dir, lpfam_dir["hfbtho_main"], rank)
+    if rank == 0:
+        run_lpfam(job_dir, lpfam_dir["hfbtho_allpart"], rank)
+    else:
+        run_lpfam(job_dir, lpfam_dir["hfbtho_diffpart"], rank)
+    # comm.barrier()  # insure emulatortraining.dat exists before every subprocess moved output to the destination.
+        
+    print("list jobdir: " ,os.listdir())
+    if not os.path.exists("emulatortraining.dat"):
+        print(f"emulatortraining.dat NOT exists in job {rank}, exits! ")
+        sys.exit()
+    else:
+        print(rank, "done!")
+        trainingDataName = os.path.join(trainingDataOpeator_dir, "emulatortraining.dat" + str(rank).zfill(3))
+        shutil.copy2(os.path.join(job_dir, "emulatortraining.dat"), trainingDataName)
+
     
 
 if __name__ == "__main__":
