@@ -1,0 +1,6 @@
+0. You must not make clear.   You must keep a hfbtho_solver.o and hfbtho_solver.mod for qrpa_hfbtho to compile.
+
+1.
+	ifort -c qrpa_hfbtho.f90		! This step to get qrpa_hfbtho.o and qrpa_hfbtho.mod.    It needs hfbtho_solver.mod and hfbtho_solver.o
+
+2. make hfbtho_allpart or hfbtho_diffpart
